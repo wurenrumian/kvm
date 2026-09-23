@@ -6,15 +6,15 @@
 
 ---
 
-## 在线文档站
+## 文档站
 
-课程同时提供 Astro + Starlight 构建的文档站，带侧边栏导航和全文搜索：
+课程内容也可以用 Astro + Starlight 渲染成带侧边栏和全文搜索的网页：
 
-- 线上：<https://wurenrumian.github.io/kvm/>
 - 源码：`site/`
-- 本地预览：`cd site && npm install && npm run dev`
+- 本地运行：`cd site && npm install && npm run dev`（http://localhost:4321/）
 
 站点内容由根目录 Markdown 自动同步生成（`site/scripts/sync-docs.mjs`），无需维护两份内容。
+构建产物 `dist/` 是纯静态文件，可放到任意静态托管。
 
 ---
 

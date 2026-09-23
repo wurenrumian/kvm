@@ -2,11 +2,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// GitHub Pages 项目站点地址：https://wurenrumian.github.io/kvm/
-// 若改用自定义域名或用户主页，请同步修改 site / base
+// 默认在站点根路径运行（本地 http://localhost:4321/）。
+// 若以后要部署到子路径（例如 GitHub Pages 项目站点 /<repo>），再加：
+//   site: 'https://<user>.github.io',
+//   base: '/<repo>',
 export default defineConfig({
-	site: 'https://wurenrumian.github.io',
-	base: '/kvm',
 	integrations: [
 		starlight({
 			title: 'KVM 虚拟化课程',

@@ -37,10 +37,12 @@ npm run preview  # 本地预览构建产物
 | `astro.config.mjs` | 站点标题、`site`/`base`、侧边栏配置 |
 | `public/` | 静态资源（favicon 等） |
 
-## 部署
+## 构建产物与托管
 
-推送到 `main` 后，`.github/workflows/deploy.yml` 会自动构建并发布到 GitHub Pages。
+`npm run build` 生成的 `dist/` 是纯静态文件，可以：
 
-> 首次使用需在仓库 **Settings → Pages** 中把 **Source** 设为 **GitHub Actions**。
+- 本地直接预览：`npm run build && npm run preview`
+- 放到任意静态托管（Nginx / Caddy / Cloudflare Pages / Netlify / Vercel 等）
 
-若改用自定义域名或用户主页，请同步修改 `astro.config.mjs` 里的 `site` 与 `base`。
+> 若部署到**子路径**（例如 `https://example.com/kvm/`），需在 `astro.config.mjs`
+> 里设置 `site` 与 `base`；部署在根路径则无需配置。

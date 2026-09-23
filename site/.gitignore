@@ -17,8 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
-# generated docs (synced from repo root markdown by scripts/sync-docs.mjs)
+# generated docs (synced from repo markdown by scripts/sync-docs.mjs)
 src/content/docs/modules/
+src/content/docs/scripts.md
 
 # macOS-specific files
 .DS_Store

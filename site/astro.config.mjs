@@ -17,6 +17,7 @@ export default defineConfig({
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/wurenrumian/kvm' },
 			],
+			customCss: ['./src/styles/custom.css'],
 			sidebar: [
 				{
 					label: '基础',
@@ -46,8 +47,9 @@ export default defineConfig({
 					],
 				},
 				{
-					label: '附录',
+					label: '资源',
 					items: [
+						{ label: '演示脚本', slug: 'scripts' },
 						{ label: '命令速查表', slug: 'modules/appendix-cheatsheet' },
 					],
 				},

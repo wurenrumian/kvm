@@ -1,0 +1,26 @@
+# ---- 演示镜像：体积大，用 scripts/00-download-iso.sh 下载，不入库 ----
+iso/
+*.iso
+*.img
+*.qcow2
+*.raw
+*.qcow
+*.vmdk
+*.vdi
+
+# ---- 虚拟机磁盘目录 ----
+images/
+
+# ---- 演示运行日志与状态 ----
+logs/
+*.log
+
+# ---- 临时文件 ----
+*.tmp
+*.swp
+*~
+.DS_Store
+
+# ---- 编辑器/IDE ----
+.vscode/
+.idea/

@@ -1,0 +1,21 @@
+{
+  "name": "kvm-docs",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "sync": "node scripts/sync-docs.mjs",
+    "predev": "npm run sync",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "npm run sync",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.42.3",
+    "astro": "^7.2.10",
+    "sharp": "^0.35.3"
+  }
+}

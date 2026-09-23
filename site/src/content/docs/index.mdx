@@ -1,0 +1,105 @@
+---
+title: KVM 虚拟化系统课程
+description: 从原理到实战，系统掌握 QEMU/KVM 虚拟化：架构原理、存储网络、性能调优、迁移高可用、安全加固与排障。
+template: splash
+hero:
+  tagline: 从一台裸机到生产可用的虚拟化平台 —— 原理、运维、调优、排障
+  actions:
+    - text: 开始学习
+      link: ./modules/01-basics/
+      icon: right-arrow
+      variant: primary
+    - text: 命令速查表
+      link: ./modules/appendix-cheatsheet/
+      icon: document
+---
+
+import { Card, CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
+
+## 这门课讲什么
+
+面向有 Linux 基础、想把 KVM 从「会用」到「讲得清」的工程师。围绕一条主线展开：
+**从一台裸机到能生产可用的虚拟化平台**，每一层（CPU、内存、I/O、存储、网络、迁移、
+安全、性能）都讲清楚「为什么这么设计」和「怎么调、怎么排错」。
+
+每个模块统一结构：**学习目标 → 核心概念 → 原理拆解 → 动手实验 → 排错指南 → 练习 → 延伸阅读**。
+
+<Aside type="tip" title="先跑通，再深挖">
+建议先做完模块 02，让虚拟机真正跑起来，有体感后再回头看模块 03 的原理。
+配套的 <a href="https://github.com/wurenrumian/kvm/tree/main/scripts">演示脚本</a> 可以直接把核心概念跑一遍。
+</Aside>
+
+## 课程结构
+
+<CardGrid>
+  <Card title="基础" icon="open-book">
+    虚拟化原理与 KVM 的定位，装好工具链，跑通第一台虚拟机。
+
+    <a href="./modules/01-basics/">从模块 01 开始 →</a>
+  </Card>
+  <Card title="管理与运维" icon="setting">
+    libvirt 生命周期、存储与网络虚拟化、设备直通与 I/O。
+
+    <a href="./modules/04-libvirt/">进入模块 04 →</a>
+  </Card>
+  <Card title="进阶" icon="rocket">
+    性能调优、迁移与高可用、安全隔离、监控排障、前沿生态。
+
+    <a href="./modules/08-performance/">进入模块 08 →</a>
+  </Card>
+  <Card title="速查" icon="list-format">
+    常用命令一页纸，随查随用。
+
+    <a href="./modules/appendix-cheatsheet/">打开命令速查表 →</a>
+  </Card>
+</CardGrid>
+
+## 全部模块
+
+<CardGrid>
+  <LinkCard title="01 · 虚拟化基础与 KVM 定位" href="./modules/01-basics/" description="虚拟化分类、KVM 在栈中的位置、与容器的边界。" />
+  <LinkCard title="02 · 环境搭建与第一台虚拟机" href="./modules/02-first-vm/" description="安装工具链，裸 QEMU 与 libvirt 两种方式跑通 VM。" />
+  <LinkCard title="03 · KVM 架构与工作原理" href="./modules/03-architecture/" description="CPU/内存/I/O 虚拟化、VM-Exit、EPT、virtio。" />
+  <LinkCard title="04 · libvirt 与生命周期管理" href="./modules/04-libvirt/" description="域 XML、virsh、快照、克隆与备份。" />
+  <LinkCard title="05 · 存储虚拟化" href="./modules/05-storage/" description="镜像格式、cache 模式、后备链、精简置备。" />
+  <LinkCard title="06 · 网络虚拟化" href="./modules/06-network/" description="NAT/桥接/macvtap/OVS/SR-IOV、vhost、多队列。" />
+  <LinkCard title="07 · 设备直通与 I/O 虚拟化" href="./modules/07-passthrough/" description="virtio、VFIO、IOMMU 分组、GPU 直通。" />
+  <LinkCard title="08 · 性能调优" href="./modules/08-performance/" description="vCPU 绑核、NUMA、HugePages、io_uring、压测。" />
+  <LinkCard title="09 · 迁移与高可用" href="./modules/09-migration/" description="热迁移、pre/post-copy、共享存储、HA。" />
+  <LinkCard title="10 · 安全与隔离" href="./modules/10-security/" description="sVirt/SELinux、Secure Boot、vTPM、侧信道。" />
+  <LinkCard title="11 · 监控与排障" href="./modules/11-monitoring/" description="kvm_stat、perf kvm、domstats、分层排障。" />
+  <LinkCard title="12 · 高级主题与生态" href="./modules/12-advanced/" description="嵌套虚拟化、SEV/TDX、KubeVirt、Firecracker。" />
+</CardGrid>
+
+## 两条学习路线
+
+**速通路线（约 1 周，目标：能独立搭平台）**
+
+`01 → 02 → 04 → 05 → 06 → 09 → 速查表`
+
+**系统路线（约 4 周，目标：讲得清 + 调得动）**
+
+`01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12`
+
+## 快速开始
+
+环境基线为 Fedora 44 / Intel VT-x。先装工具链，再跑演示：
+
+```bash
+git clone https://github.com/wurenrumian/kvm.git
+cd kvm
+
+# 1) 环境自检（只读）
+./scripts/01-check-env.sh
+
+# 2) 安装 QEMU/libvirt（需要 sudo，装完重新登录）
+sudo ./scripts/02-setup-toolchain.sh
+
+# 3) 下载演示镜像（独立脚本，约 60MB）
+./scripts/00-download-iso.sh
+
+# 4) 一键跑全部演示
+./scripts/run-all.sh --no-install
+```
+
+> 演示脚本与课程模块一一对应，详见仓库的 `scripts/README.md`。

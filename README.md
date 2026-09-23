@@ -6,6 +6,18 @@
 
 ---
 
+## 在线文档站
+
+课程同时提供 Astro + Starlight 构建的文档站，带侧边栏导航和全文搜索：
+
+- 线上：<https://wurenrumian.github.io/kvm/>
+- 源码：`site/`
+- 本地预览：`cd site && npm install && npm run dev`
+
+站点内容由根目录 Markdown 自动同步生成（`site/scripts/sync-docs.mjs`），无需维护两份内容。
+
+---
+
 ## 一、这套课程是什么
 
 面向"有 Linux 基础、想把 KVM 从会用到讲得清"的工程师。它不走学术路线，而是围绕
